@@ -5,11 +5,18 @@ let launches;
 // cached element references - parts of the dom we need to touch
 const $launches = $('#launches');
 // event listeners - capture and respond to events i.e. user clicks on something
+$launches.on('click', '.card',handleShowModal);
 // functions - code that represents actions taken/carried out
 init();
 function init() {
     getData();
 }
+
+
+function handleShowModal() {
+    $('.modal').modal();
+}
+
 function getData() {
     $.ajax(BASE_URL + "?limit=12")
         .then(function (data) {
