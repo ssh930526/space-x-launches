@@ -14,6 +14,27 @@ function init() {
 
 
 function handleShowModal() {
+     const flightId = parseInt(this.dataset.flightNumber);
+
+    // console.log(this.dataset.flightNumber);
+
+     const selectedLaunch = launches.find(function(launch) {
+        return launch.flight_number === flightId;
+    });
+    console.log(selectedLaunch);
+
+    //add the content to the modal
+    $('#patch').attr({
+        src: selectedLaunch.links.mission_patch_small,
+        alt: selectedLaunch.mission_name
+    });
+
+    $('#title').text(selectedLaunch.mission_name);
+
+    $('#year').text(`Year of Launch: ${selectedLaunch.launch_year}`);
+
+    $('#details').text(selectedLaunch.details.slice(0, 240));
+
     $('.modal').modal();
 }
 
@@ -29,7 +50,7 @@ function getData() {
 function render() {
     const html = launches.map(function(launch) {
         return `
-            <article class="card">
+            <article  data-flight-number="${launch.flight_number}" class="card">
                 <h1>${launch.mission_name}</h1>
                 <p>${launch.launch_year}</p>
             </article>

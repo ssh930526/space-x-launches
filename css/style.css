@@ -45,3 +45,20 @@ main {
 footer {
     justify-content: center;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.col-1 {
+    display: flex;
+    /* justify-content: space-evenly; */
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.col-1 * {
+    margin-bottom: 14px;
+}
